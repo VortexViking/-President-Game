@@ -52,9 +52,11 @@ presidents = [
 def guessing_game():
     # Randomly choose a president
     chosen_president = random.choice(presidents)
-    
-    print("Welcome to the U.S. President Guessing Game!")
-    print("I'm thinking of a U.S. president. Can you guess who it is?")
+
+    print("************************************************************)
+    print("*Welcome to the U.S. President Guessing Game!               *")
+    print("*I'm thinking of a U.S. president. Can you guess who it is? *")
+    print("************************************************************)
     print(f"Hint 1: The president was born in {chosen_president['birth_year']}.")
     print(f"Hint 2: The president's wife's first name is {chosen_president['wife']}.")
     print(f"Hint 3: The president {'had' if chosen_president['has_beard'] else 'did not have'} a beard.")
@@ -68,7 +70,7 @@ def guessing_game():
         guess = input(f"Attempt {attempts + 1}/{max_attempts} - Enter your guess: ").strip().lower()  # Convert input to lowercase
 
         if guess not in [pres["name"] for pres in presidents]:
-            print("That is not a valid president's name. Try again.")
+            print("No president has that name")
             continue
 
         attempts += 1
@@ -82,10 +84,10 @@ def guessing_game():
                 print(f"Correct! You get 1 point.")
             guessed_correctly = True
         elif guess < chosen_president["name"]:
-            print("Guess higher!")
+            print("The president is later on the list!")
             score -= 1  # Deduct 1 point for an incorrect guess
         elif guess > chosen_president["name"]:
-            print("Guess lower!")
+            print("The president is earlier on the list!")
             score -= 1  # Deduct 1 point for an incorrect guess
 
     if not guessed_correctly:
